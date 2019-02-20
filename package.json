@@ -1,0 +1,11 @@
+{
+  "name": "boilermaker",
+  "version": "1.0.0",
+  "description": "This is a template for future project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miyuki Abe",
+  "license": "ISC"
+}
