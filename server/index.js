@@ -8,8 +8,6 @@ const morgan = require('morgan')
 // require('./socket')(io);
 
 
-// db.sync().then(() => console.log('Database is synced'));
-
 // logging middleware
 app.use(morgan('dev'));
 
@@ -42,9 +40,6 @@ app.use((err, req, res, next) => {
   }
 );
 
-//Listen to the Server!!
-const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`I am listening on port ${PORT}!!! :)`))
 
 module.exports = app;
