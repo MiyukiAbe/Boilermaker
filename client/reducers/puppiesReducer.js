@@ -14,10 +14,7 @@ export const receiveSinglePuppies = (puppy) => ({
 
 const initialState = {
   puppies: [],
-  puppy: {
-    id: 1,
-    name: 'Kochi'
-  }
+  puppy: {}
 }
 
 export function puppiesReducer (state = initialState, action) {

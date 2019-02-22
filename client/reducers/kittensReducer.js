@@ -13,10 +13,7 @@ const receiveSingleKitten = (kitten) => ({
 
 const initialState = {
   kittens: [],
-  kitten: {
-    id: 1,
-    name: 'Chopi'
-  }
+  kitten: {}
 }
 
 export function kittensReducer (state = initialState, action) {
