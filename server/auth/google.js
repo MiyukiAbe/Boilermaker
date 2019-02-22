@@ -28,11 +28,23 @@ module.exports = router
      callbackURL: process.env.GOOGLE_CALLBACK
    }
    
-   const verificationCallBack = function (token, refreshToken, profile, done) {
-     const googleId = profile.id
-     const name = profile.name
-     const email = profile
+   const verificationCallBack = async (token, refreshToken, profile, done) => {
+     try {
+       const [user] = await User.findOrCreate({
+         where: {
+           googleId: profile.id
+         },
+         defaults: {
+           email: profile.emails[0].value,
+           name: profile.displayName
+         }
+       })
+       done(null, user)
+     } catch (error){
+       done(error)
+     }
    }
    const strategy = new GoogleStrategy(googleConfig, verificationCallBack)
    
+   passport.use(strategy)
  }

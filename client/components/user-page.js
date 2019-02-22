@@ -2,10 +2,11 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {logout} from '../reducers/logIn&OutReducer'
+import Test from './Test'
 
 const UserPage = (props) => {
   const {user, handleClick} = props
-
+  
   if (!user.id) {
     return <Redirect to='/' />
   }
@@ -19,6 +20,7 @@ const UserPage = (props) => {
       <div>
         <button className='btn bg-red white p1 rounded' onClick={handleClick}>Logout</button>
       </div>
+      <Test />
     </div>
   )
 }
