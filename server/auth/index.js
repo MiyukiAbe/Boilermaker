@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { User } = require('../db')
-
 module.exports = router
+
+//re-routing to google - oauth
+router.use('/google', require('./google'))
 
 
 //This is Local Login. Which means user decided to save login password and email with my app.

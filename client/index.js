@@ -7,7 +7,7 @@ import '../public/styles/main.css'
 import {
     BrowserRouter as Router
   } from 'react-router-dom';
-import {Route, Switch, withRouter} from 'react-router-dom'
+
   
 ReactDOM.render(
   <Provider store={store}>

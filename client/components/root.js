@@ -8,7 +8,7 @@ import store from '../store'
 
 class Root extends Component {
   componentDidMount () {
-    console.log('refreshing page')
+    console.log('im inside root', process.env.GOOGLE_CLIENT_SECRET)
     store.dispatch(getMe())
       .then(() => {
         this.props.history.push('/home')

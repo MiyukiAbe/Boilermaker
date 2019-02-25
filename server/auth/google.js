@@ -2,7 +2,17 @@ const passport = require('passport')
 const router = require('express').Router()
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
 const { User } = require('../db')
+require('dotenv').config();
 module.exports = router
+
+router.get('/', passport.authenticate('google', { scope: 'email'}))
+
+router.get('/callback', passport.authenticate('google', {
+  successRedirect: '/home',
+  failureRedirect: '/'
+}))
+
+
 /**
  * For OAuth keys and other secrets, your Node process will search
  * process.env to find environment variables. On your production server,
@@ -14,14 +24,15 @@ module.exports = router
  **/
 
  
- process.env.GOOGLE_CLIENT_ID = '150832062609-vatcv9o8722ji1tj7urbm5t0n7ieoi00.apps.googleusercontent.com'
- process.env.GOOGLE_CLIENT_SECRET = 'A5hYiCX57FkZ1JxuZy_r0j-t'
- process.env.GOOGLE_CALLBACK = 'http://localhost:3000/auth/google/callback'
+//  process.env.GOOGLE_CLIENT_ID = '150832062609-vatcv9o8722ji1tj7urbm5t0n7ieoi00.apps.googleusercontent.com'
+//  process.env.GOOGLE_CLIENT_SECRET = 'A5hYiCX57FkZ1JxuZy_r0j-t'
+//  process.env.GOOGLE_CALLBACK = 'http://localhost:3000/auth/google/callback'
  
 
  if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
    console.log('Google client Id / secret not found. Skipping Google OAuth')
  } else {
+   console.log('process.env.',process.env.GOOGLE_CLIENT_ID)
    const googleConfig = {
      clientID: process.env.GOOGLE_CLIENT_ID,
      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
